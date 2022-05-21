@@ -9,7 +9,7 @@ var getSymbols = ('!','@','#','$','%','^','&','*','(',')','_','-','<','>','/','?
 // define generatePassword function
 function generatePassword(){
 
-}
+};
 
 // password prompts
 function passwordPrompts() {
@@ -34,7 +34,7 @@ function passwordPrompts() {
   if (confirm("Do you want to include symbols in your password? Click 'OK' if yes, or 'Cancel' if not.")) {
     choiceArray = choiceArray.concat(getSymbols);
   }
-}
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
