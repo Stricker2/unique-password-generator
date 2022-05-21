@@ -37,7 +37,12 @@ function passwordPrompts() {
 
 // define generatePassword function
 function generatePassword(){
-
+  var password = '';
+  for(var i = 0; i < passwordLength; i++) {
+    var randomChoice = Math.floor(Math.random() * choiceArray.length)
+    password = password + choiceArray[randomChoice];
+  }
+  console.log(password);
 };
 
 // Get references to the #generate element
@@ -47,7 +52,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() { 
   // adding if statement so password only gets generated when prompt function returns true
-  var chosenPrompts = getPrompts();
+  var chosenPrompts = passwordPrompts();
 
   if(chosenPrompts) {
     var password = generatePassword();
@@ -55,6 +60,7 @@ function writePassword() {
 
     passwordText.value = password;
   }
+  // PASSWORD IS UNDEFINED IN TEXT BOX EVEN THOUGH IT SHOWS IN CONSOLE LOG FROM generatePassword FUNCTION
 };
 
 // Add event listener to generate button
