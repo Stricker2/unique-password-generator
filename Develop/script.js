@@ -11,11 +11,11 @@ function passwordPrompts() {
   choiceArray = [];
 
   passwordLength = parseInt(window.prompt("Please input a number between 8 and 128 to declare the character length of your password:"));
-  // BLANK RESPONSE OR NULL RESPONSE STILL GO THROUGH
-  if (passwordLength < 8 || passwordLength > 128 || passwordLength == '' || passwordLength === null) {
+  if (!passwordLength || passwordLength < 8 || passwordLength > 128) {
     window.alert("The number you provided is invalid. Please provide a number between 8 and 128");
     return passwordPrompts();
   }
+  console.log(passwordLength);
 
   if (confirm("Do you want to include lowercase letters in your password? Click 'OK' if yes, or 'Cancel' if not.")) {
     choiceArray = choiceArray.concat(getLowers);
@@ -37,12 +37,14 @@ function passwordPrompts() {
 
 // define generatePassword function
 function generatePassword(){
-  var password = '';
+  var generatedPassword = '';
   for(var i = 0; i < passwordLength; i++) {
     var randomChoice = Math.floor(Math.random() * choiceArray.length)
-    password = password + choiceArray[randomChoice];
+    generatedPassword = generatedPassword + choiceArray[randomChoice];
   }
-  console.log(password);
+  console.log(generatedPassword);
+
+  return generatedPassword
 };
 
 // Get references to the #generate element
@@ -60,7 +62,6 @@ function writePassword() {
 
     passwordText.value = password;
   }
-  // PASSWORD IS UNDEFINED IN TEXT BOX EVEN THOUGH IT SHOWS IN CONSOLE LOG FROM generatePassword FUNCTION
 };
 
 // Add event listener to generate button
